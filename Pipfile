@@ -1,0 +1,26 @@
+[[source]]
+
+url = "https://pypi.python.org/simple"
+verify_ssl = false
+name = "pypi"
+
+
+[dev-packages]
+
+neovim = "*"
+ipython = "*"
+ipdb = "*"
+
+
+[packages]
+
+django = "==2.0.1"
+markdown = "==2.6.11"
+djangorestframework = "==3.7.7"
+psycopg2 = "==2.7.3.2"
+djangorestframework-jwt = "==1.11.0"
+
+
+[requires]
+
+python_version = "3.6"
