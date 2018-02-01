@@ -1,0 +1,50 @@
+[
+{
+  "model": "team.teamcatalogue",
+  "pk": 1,
+  "fields": {
+    "name": "Team Seal S6",
+    "mentor": 2
+  }
+},
+{
+  "model": "team.teamcatalogue",
+  "pk": 2,
+  "fields": {
+    "name": "Team Seal S2",
+    "mentor": 2
+  }
+},
+{
+  "model": "team.teamcatalogue",
+  "pk": 3,
+  "fields": {
+    "name": "Team Delta S6",
+    "mentor": 3
+  }
+},
+{
+  "model": "team.teamcatalogue",
+  "pk": 4,
+  "fields": {
+    "name": "Team Delta S5",
+    "mentor": 3
+  }
+},
+{
+  "model": "team.teamcatalogue",
+  "pk": 5,
+  "fields": {
+    "name": "Team Kelly S6",
+    "mentor": 4
+  }
+},
+{
+  "model": "team.teamcatalogue",
+  "pk": 6,
+  "fields": {
+    "name": "Team George S6",
+    "mentor": 5
+  }
+}
+]

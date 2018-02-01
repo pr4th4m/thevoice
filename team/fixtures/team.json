@@ -1,0 +1,146 @@
+[
+{
+  "model": "team.team",
+  "pk": 1,
+  "fields": {
+    "team": 1,
+    "candidate": 6
+  }
+},
+{
+  "model": "team.team",
+  "pk": 2,
+  "fields": {
+    "team": 1,
+    "candidate": 7
+  }
+},
+{
+  "model": "team.team",
+  "pk": 3,
+  "fields": {
+    "team": 1,
+    "candidate": 8
+  }
+},
+{
+  "model": "team.team",
+  "pk": 4,
+  "fields": {
+    "team": 2,
+    "candidate": 18
+  }
+},
+{
+  "model": "team.team",
+  "pk": 5,
+  "fields": {
+    "team": 2,
+    "candidate": 19
+  }
+},
+{
+  "model": "team.team",
+  "pk": 6,
+  "fields": {
+    "team": 2,
+    "candidate": 20
+  }
+},
+{
+  "model": "team.team",
+  "pk": 7,
+  "fields": {
+    "team": 3,
+    "candidate": 9
+  }
+},
+{
+  "model": "team.team",
+  "pk": 8,
+  "fields": {
+    "team": 3,
+    "candidate": 10
+  }
+},
+{
+  "model": "team.team",
+  "pk": 9,
+  "fields": {
+    "team": 3,
+    "candidate": 11
+  }
+},
+{
+  "model": "team.team",
+  "pk": 10,
+  "fields": {
+    "team": 4,
+    "candidate": 21
+  }
+},
+{
+  "model": "team.team",
+  "pk": 11,
+  "fields": {
+    "team": 4,
+    "candidate": 22
+  }
+},
+{
+  "model": "team.team",
+  "pk": 12,
+  "fields": {
+    "team": 4,
+    "candidate": 23
+  }
+},
+{
+  "model": "team.team",
+  "pk": 13,
+  "fields": {
+    "team": 5,
+    "candidate": 12
+  }
+},
+{
+  "model": "team.team",
+  "pk": 14,
+  "fields": {
+    "team": 5,
+    "candidate": 13
+  }
+},
+{
+  "model": "team.team",
+  "pk": 15,
+  "fields": {
+    "team": 5,
+    "candidate": 14
+  }
+},
+{
+  "model": "team.team",
+  "pk": 16,
+  "fields": {
+    "team": 6,
+    "candidate": 15
+  }
+},
+{
+  "model": "team.team",
+  "pk": 17,
+  "fields": {
+    "team": 6,
+    "candidate": 16
+  }
+},
+{
+  "model": "team.team",
+  "pk": 18,
+  "fields": {
+    "team": 6,
+    "candidate": 17
+  }
+}
+]

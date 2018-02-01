@@ -19,7 +19,7 @@ from django.urls import path
 from django.conf.urls import url, include
 from rest_framework import routers
 from rest_framework_jwt.views import obtain_jwt_token
-from thevoice.team import views
+from team import views
 
 router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)

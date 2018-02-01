@@ -10,6 +10,7 @@ name = "pypi"
 neovim = "*"
 ipython = "*"
 ipdb = "*"
+jedi = "*"
 
 
 [packages]
@@ -17,7 +18,7 @@ ipdb = "*"
 django = "==2.0.1"
 markdown = "==2.6.11"
 djangorestframework = "==3.7.7"
-psycopg2 = "==2.7.3.2"
+"psycopg2" = "==2.7.3.2"
 djangorestframework-jwt = "==1.11.0"
 
 

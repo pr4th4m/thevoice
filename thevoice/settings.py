@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'team.apps.TeamConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -87,6 +88,11 @@ DATABASES = {
         'PASSWORD': 'root',
     }
 }
+
+# NOTE: Only used for user fixtures,
+# all other fixtures are in their
+# corresponding apps fixture directory
+FIXTURE_DIRS = ['fixtures']
 
 # Django Rest Framework
 # NOTE: We can remove SessionAuthentication if we
