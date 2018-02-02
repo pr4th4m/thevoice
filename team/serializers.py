@@ -1,14 +1,29 @@
-from django.contrib.auth.models import User, Group
+from django.contrib.auth.models import User
 from rest_framework import serializers
+from .models import (
+    Team,
+    TeamCatalogue
+)
 
 
-class UserSerializer(serializers.HyperlinkedModelSerializer):
+class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('url', 'username', 'email', 'groups')
+        fields = ('id', 'username')
 
 
-class GroupSerializer(serializers.HyperlinkedModelSerializer):
+class TeamCatalogueSerializer(serializers.ModelSerializer):
+    mentor = UserSerializer()
+
     class Meta:
-        model = Group
-        fields = ('url', 'name')
+        model = TeamCatalogue
+        fields = ('name', 'mentor')
+
+
+class TeamSerializer(serializers.ModelSerializer):
+    candidate = UserSerializer()
+    team = TeamCatalogueSerializer()
+
+    class Meta:
+        model = Team
+        fields = ('candidate', 'team')

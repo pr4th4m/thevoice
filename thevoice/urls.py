@@ -22,8 +22,7 @@ from rest_framework_jwt.views import obtain_jwt_token
 from team import views
 
 router = routers.DefaultRouter()
-router.register(r'users', views.UserViewSet)
-router.register(r'groups', views.GroupViewSet)
+router.register(r'teams', views.TeamViewSet, base_name='teams')
 
 urlpatterns = [
     url(r'^', include(router.urls)),

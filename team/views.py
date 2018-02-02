@@ -1,19 +1,21 @@
-from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
-from team.serializers import UserSerializer, GroupSerializer
+
+from .serializers import TeamSerializer
+from .models import Team
 
 
-class UserViewSet(viewsets.ModelViewSet):
+class TeamViewSet(viewsets.ModelViewSet):
     """
-    API endpoint that allows users to be viewed or edited.
     """
-    queryset = User.objects.all().order_by('-date_joined')
-    serializer_class = UserSerializer
+    serializer_class = TeamSerializer
 
+    def get_queryset(self):
 
-class GroupViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows groups to be viewed or edited.
-    """
-    queryset = Group.objects.all()
-    serializer_class = GroupSerializer
+        teams = Team.objects.select_related('team').order_by(
+            '-team__name')
+
+        if not self.request.user.is_superuser:
+            teams = teams.filter(
+                team__mentor=self.request.user)
+
+        return teams
