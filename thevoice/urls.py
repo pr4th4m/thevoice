@@ -19,10 +19,19 @@ from django.urls import path
 from django.conf.urls import url, include
 from rest_framework import routers
 from rest_framework_jwt.views import obtain_jwt_token
-from team import views
+from team import views as team_views
+from performance import views as performance_views
 
 router = routers.DefaultRouter()
-router.register(r'teams', views.TeamViewSet, base_name='teams')
+
+router.register(r'teams',
+                team_views.TeamViewSet,
+                base_name='teams')
+
+# router.register(r'{candidate_id}/performances',
+router.register(r'performances',
+                performance_views.PerformanceViewSet,
+                base_name='performances')
 
 urlpatterns = [
     url(r'^', include(router.urls)),
