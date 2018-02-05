@@ -21,6 +21,7 @@ from rest_framework import routers
 from rest_framework_jwt.views import obtain_jwt_token
 from team import views as team_views
 from performance import views as performance_views
+from score import views as score_views
 
 router = routers.DefaultRouter()
 
@@ -31,6 +32,10 @@ router.register(r'teams',
 router.register(r'performances',
                 performance_views.PerformanceViewSet,
                 base_name='performances')
+
+router.register(r'scores',
+                score_views.ScoreViewSet,
+                base_name='scores')
 
 urlpatterns = [
     url(r'^', include(router.urls)),
