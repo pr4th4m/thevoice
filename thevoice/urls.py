@@ -28,7 +28,6 @@ router.register(r'teams',
                 team_views.TeamViewSet,
                 base_name='teams')
 
-# router.register(r'{candidate_id}/performances',
 router.register(r'performances',
                 performance_views.PerformanceViewSet,
                 base_name='performances')
