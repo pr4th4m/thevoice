@@ -80,10 +80,14 @@ WSGI_APPLICATION = 'thevoice.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
+# NOTE: This is done as db host value is set to db
+# when running with docker compose
+DB_HOST = 'db' if os.getenv('DOCKER_CONTAINER') else 'localhost'
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'HOST': 'localhost',
+        'HOST': DB_HOST,
         'PORT': '5432',
         'NAME': 'thevoice',
         'USER': 'postgres',
