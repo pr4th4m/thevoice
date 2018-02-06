@@ -24,7 +24,8 @@ class TeamCatalogueSerializer(serializers.ModelSerializer):
 class TeamSerializer(serializers.ModelSerializer):
     candidate = UserSerializer()
     team = TeamCatalogueSerializer()
+    candidate_avg = serializers.IntegerField()
 
     class Meta:
         model = Team
-        fields = ('candidate', 'team')
+        fields = ('candidate', 'team', 'candidate_avg')

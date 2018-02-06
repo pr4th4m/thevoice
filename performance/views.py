@@ -1,6 +1,7 @@
 from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework.decorators import list_route
+from django.db.models import Avg
 
 from .serializers import PerformanceSerializer
 from .models import Performance
@@ -16,7 +17,8 @@ class PerformanceViewSet(viewsets.ModelViewSet):
     def get_by_candidate(self, request, candidate_id=None):
 
         queryset = Performance.objects.select_related('candidate').filter(
-            candidate=candidate_id).order_by('-date')
+            candidate=candidate_id).order_by('-date').annotate(
+                performance_avg=Avg('score__score'))
 
         serializer = self.serializer_class(queryset,
                                            context={'request': request},
