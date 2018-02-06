@@ -2,9 +2,13 @@ from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework.decorators import list_route
 from django.db.models import Avg
+import logging
 
 from .serializers import PerformanceSerializer
 from .models import Performance
+
+# Module logger
+logger = logging.getLogger(__name__)
 
 
 class PerformanceViewSet(viewsets.ModelViewSet):
@@ -23,4 +27,7 @@ class PerformanceViewSet(viewsets.ModelViewSet):
         serializer = self.serializer_class(queryset,
                                            context={'request': request},
                                            many=True)
+
+        logger.debug("Fetched performances for candidate ID {0}".format(
+            candidate_id))
         return Response(serializer.data)

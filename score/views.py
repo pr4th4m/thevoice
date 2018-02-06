@@ -1,9 +1,13 @@
 from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework.decorators import list_route
+import logging
 
 from .serializers import ScoreSerializer
 from .models import Score
+
+# Module logger
+logger = logging.getLogger(__name__)
 
 
 class ScoreViewSet(viewsets.ModelViewSet):
@@ -21,4 +25,7 @@ class ScoreViewSet(viewsets.ModelViewSet):
         serializer = self.serializer_class(queryset,
                                            context={'request': request},
                                            many=True)
+
+        logger.debug("Fetched scores for performance ID {0}".format(
+            performance_id))
         return Response(serializer.data)
