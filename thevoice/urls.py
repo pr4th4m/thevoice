@@ -39,7 +39,7 @@ router.register(r'scores',
 
 urlpatterns = [
     url(r'^', include(router.urls)),
-    url(r'^login/', obtain_jwt_token),
+    url(r'^login/', obtain_jwt_token, name='login'),
 
     # NOTE: The below urls are optional
     # They are used by django rest framework browsable api
