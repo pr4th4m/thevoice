@@ -31,9 +31,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'team.apps.TeamConfig',
-    'performance.apps.PerformanceConfig',
-    'score.apps.ScoreConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,6 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'team.apps.TeamConfig',
+    'performance.apps.PerformanceConfig',
+    'score.apps.ScoreConfig',
 ]
 
 # NOTE: We can remove SessionMiddleware, CsrfViewMiddleware
@@ -90,11 +90,6 @@ DATABASES = {
         'PASSWORD': 'root',
     }
 }
-
-# NOTE: Only used for user fixtures,
-# all other fixtures are in their
-# corresponding apps fixture directory
-FIXTURE_DIRS = ['fixtures']
 
 # Django Rest Framework
 # NOTE: We can remove SessionAuthentication if we
