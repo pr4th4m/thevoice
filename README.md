@@ -20,6 +20,33 @@
         # - Take down containers
 
 
+**User types**
+- Admin
+
+        username: admin
+        password: thevoiceadmin
+
+- Mentors
+
+        username: seal.seal
+        password: thevoiceseal
+
+        username: delta.goodrem
+        password: thevoicedelta
+
+        username: kelly.rowland
+        password: thevoicekelly
+
+        username: boy.george
+        password: thevoiceboy
+
+
+**Django rest framework web api / Django admin panel**
+
+    Django rest framework web api:  http://localhost:8000/
+    Django admin panel:             http://localhost:8000/admin/
+
+
 **Usage**
 - Login as below, response will be JWT token
 
