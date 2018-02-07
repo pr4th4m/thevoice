@@ -35,20 +35,21 @@ class TeamViewSet(viewsets.ModelViewSet):
 
     def get_object(self):
         """
+        NOTE: This isn't required for UI
         Get team for user/admin with candidate average
         """
+        # TODO: Try to combine .get() and .annotate() together
 
-        if self.request.user.is_superuser:
-            logger.debug("Fetching team for admin user")
-            team = Team.objects.get(
-                id=self.kwargs.get('pk'))
-        else:
-            try:
-                logger.debug("Fetching team for non-admin user")
-                team = Team.objects.get(id=self.kwargs.get('pk'),
-                                        team__mentor=self.request.user)
-            except Exception as e:
-                logger.error(e)
-                raise PermissionDenied("Its not your team mate!")
+        queryset = Team.objects.filter(
+            id=self.kwargs.get('pk')).order_by(
+                '-team__name').annotate(
+                    candidate_avg=Avg('performance__score__score'))
 
-        return team
+        if not self.request.user.is_superuser:
+            logger.debug("Fetching team for non-admin user")
+            queryset = queryset.filter(team__mentor=self.request.user)
+
+        if not queryset:
+            raise PermissionDenied("Its not your team mate!")
+
+        return queryset[0]

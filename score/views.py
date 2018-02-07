@@ -37,6 +37,7 @@ class ScoreViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         """
+        NOTE: This isn't required for UI
         List scores for user/admin
         """
 
@@ -51,6 +52,7 @@ class ScoreViewSet(viewsets.ModelViewSet):
 
     def get_object(self):
         """
+        NOTE: This isn't required for UI
         Get score for user/admin
         """
 
@@ -65,6 +67,6 @@ class ScoreViewSet(viewsets.ModelViewSet):
                                         performance__team__team__mentor=self.request.user)
             except Exception as e:
                 logger.error(e)
-                raise PermissionDenied("Can't view scores for other members")
+                raise PermissionDenied("Can't view scores of other team members")
 
         return score

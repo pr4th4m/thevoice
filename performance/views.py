@@ -39,6 +39,7 @@ class PerformanceViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         """
+        NOTE: This isn't required for UI
         List performances for user/admin
         """
 
@@ -54,20 +55,20 @@ class PerformanceViewSet(viewsets.ModelViewSet):
 
     def get_object(self):
         """
+        NOTE: This isn't required for UI
         Get performance for user/admin
         """
+        # TODO: Try to combine .get() and .annotate() together
 
-        if self.request.user.is_superuser:
-            logger.debug("Fetching performance for admin user")
-            performance = Performance.objects.get(
-                id=self.kwargs.get('pk'))
-        else:
-            try:
-                logger.debug("Fetching performance for non-admin user")
-                performance = Performance.objects.get(id=self.kwargs.get('pk'),
-                                        team__team__mentor=self.request.user)
-            except Exception as e:
-                logger.error(e)
-                raise PermissionDenied("Its not performed by your team member")
+        queryset = Performance.objects.filter(
+            id=self.kwargs.get('pk')).annotate(
+                performance_avg=Avg('score__score'))
 
-        return performance
+        if not self.request.user.is_superuser:
+            logger.debug("Fetching performance for non-admin user")
+            queryset = queryset.filter(team__team__mentor=self.request.user)
+
+        if not queryset:
+            raise PermissionDenied("Its not performed by your team member")
+
+        return queryset[0]
