@@ -4,7 +4,7 @@ from rest_framework.test import APITestCase
 
 
 class PerformanceTests(APITestCase):
-    fixtures = ['user', 'performance']
+    fixtures = ['user', 'team_catalogue', 'team', 'performance']
 
     def setUp(self):
         url = reverse('login')

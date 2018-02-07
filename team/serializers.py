@@ -18,7 +18,7 @@ class TeamCatalogueSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = TeamCatalogue
-        fields = ('name', 'mentor')
+        fields = ('id', 'name', 'mentor')
 
 
 class TeamSerializer(serializers.ModelSerializer):
@@ -28,4 +28,4 @@ class TeamSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Team
-        fields = ('candidate', 'team', 'candidate_avg')
+        fields = ('id', 'candidate', 'team', 'candidate_avg')

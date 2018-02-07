@@ -1,4 +1,5 @@
 from rest_framework import viewsets
+from rest_framework.exceptions import PermissionDenied
 from django.db.models import Avg
 import logging
 
@@ -19,7 +20,7 @@ class TeamViewSet(viewsets.ModelViewSet):
 
         teams = Team.objects.select_related('team').order_by(
             '-team__name').annotate(
-                candidate_avg=Avg('candidate__performance__score__score'))
+                candidate_avg=Avg('performance__score__score'))
 
         if not self.request.user.is_superuser:
             logger.debug("Fetching list of teams for non-admin users")
@@ -28,3 +29,20 @@ class TeamViewSet(viewsets.ModelViewSet):
 
         logger.debug("Fetched list of teams")
         return teams
+
+    def get_object(self):
+
+        if self.request.user.is_superuser:
+            logger.debug("Fetching team for admin user")
+            team = Team.objects.get(
+                id=self.kwargs.get('pk'))
+        else:
+            try:
+                logger.debug("Fetching team for non-admin user")
+                team = Team.objects.get(id=self.kwargs.get('pk'),
+                                        team__mentor=self.request.user)
+            except Exception as e:
+                logger.error(e)
+                raise PermissionDenied("Its not your team mate!")
+
+        return team
