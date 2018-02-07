@@ -12,13 +12,13 @@ logger = logging.getLogger(__name__)
 
 
 class ScoreViewSet(viewsets.ModelViewSet):
-    """
-    """
-    queryset = Score.objects.all()
     serializer_class = ScoreSerializer
 
     @list_route(url_name='performance', url_path='performance/(?P<performance_id>[0-9]+)')
     def get_by_performance(self, request, performance_id=None):
+        """
+        List scores for performance
+        """
 
         queryset = Score.objects.select_related('performance').filter(
             performance=performance_id).order_by('-score')
@@ -36,6 +36,9 @@ class ScoreViewSet(viewsets.ModelViewSet):
         return Response(serializer.data)
 
     def get_queryset(self):
+        """
+        List scores for user/admin
+        """
 
         queryset = Score.objects.select_related('performance').order_by('-score')
 
@@ -47,6 +50,9 @@ class ScoreViewSet(viewsets.ModelViewSet):
         return queryset
 
     def get_object(self):
+        """
+        Get score for user/admin
+        """
 
         if self.request.user.is_superuser:
             logger.debug("Fetching score for admin user")

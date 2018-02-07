@@ -17,6 +17,9 @@ class TeamViewSet(viewsets.ModelViewSet):
     serializer_class = TeamSerializer
 
     def get_queryset(self):
+        """
+        List teams for user/admin with candidate average
+        """
 
         teams = Team.objects.select_related('team').order_by(
             '-team__name').annotate(
@@ -31,6 +34,9 @@ class TeamViewSet(viewsets.ModelViewSet):
         return teams
 
     def get_object(self):
+        """
+        Get team for user/admin with candidate average
+        """
 
         if self.request.user.is_superuser:
             logger.debug("Fetching team for admin user")

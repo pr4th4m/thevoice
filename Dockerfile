@@ -1,8 +1,5 @@
 # Build
 # docker build -t "thevoice:develop" .
-#
-# Run
-# docker build -t "thevoice:develop" .
 FROM python:3.6
 
 # Set work directory

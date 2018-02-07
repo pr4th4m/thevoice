@@ -8,6 +8,9 @@ from django.core.management.base import (
 
 
 class Command(BaseCommand):
+    """
+    Management command to create new databse
+    """
     help = 'Create new database'
 
     def add_arguments(self, parser):

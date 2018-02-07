@@ -44,8 +44,8 @@ INSTALLED_APPS = [
     'score.apps.ScoreConfig',
 ]
 
-# NOTE: We can remove SessionMiddleware, CsrfViewMiddleware
-# and ClickingJacking if we do not wish to use django rest framework GUI
+# NOTE: We can remove SessionMiddleware
+# if we do not wish to use django rest framework GUI
 # and django admin panel. These can be disabled because we are using JWT
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

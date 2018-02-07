@@ -7,6 +7,9 @@ from django.core.management.base import (
 
 
 class Command(BaseCommand):
+    """
+    Management command to apply provided fixtures to database
+    """
     help = 'Apply fixtures to database'
 
     def add_arguments(self, parser):

@@ -13,12 +13,13 @@ logger = logging.getLogger(__name__)
 
 
 class PerformanceViewSet(viewsets.ModelViewSet):
-    """
-    """
     serializer_class = PerformanceSerializer
 
     @list_route(url_name='candidate', url_path='candidate/(?P<candidate_id>[0-9]+)')
     def list_by_candidate(self, request, candidate_id=None):
+        """
+        List performances for given candidate
+        """
 
         queryset = Performance.objects.select_related('team').filter(
             team__candidate=candidate_id).order_by('-date').annotate(
@@ -37,6 +38,9 @@ class PerformanceViewSet(viewsets.ModelViewSet):
         return Response(serializer.data)
 
     def get_queryset(self):
+        """
+        List performances for user/admin
+        """
 
         queryset = Performance.objects.select_related('team').order_by(
             '-date').annotate(performance_avg=Avg('score__score'))
@@ -49,6 +53,9 @@ class PerformanceViewSet(viewsets.ModelViewSet):
         return queryset
 
     def get_object(self):
+        """
+        Get performance for user/admin
+        """
 
         if self.request.user.is_superuser:
             logger.debug("Fetching performance for admin user")

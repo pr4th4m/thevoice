@@ -23,6 +23,8 @@ from team import views as team_views
 from performance import views as performance_views
 from score import views as score_views
 
+# NOTE: We don't have to define django urls in each app
+# as we can utilize django rest framework default router
 router = routers.DefaultRouter()
 
 router.register(r'teams',
