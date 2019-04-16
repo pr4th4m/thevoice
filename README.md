@@ -1,11 +1,11 @@
 #### The Voice API
 
-
 **Pre-requisites**
+
 - Docker (preferred version 17.12.0-ce)
 
-
 **Quick deploy**
+
 - Commands to spin-up and destroy containers
 
         docker-compose up
@@ -19,8 +19,8 @@
         docker-compose down
         # - Take down containers
 
-
 **User types**
+
 - Admin
 
         username: admin
@@ -40,14 +40,13 @@
         username: boy.george
         password: thevoiceboy
 
-
 **Django rest framework web api / Django admin panel**
 
     Django rest framework web api:  http://localhost:8000/
     Django admin panel:             http://localhost:8000/admin/
 
-
 **Usage**
+
 - Login as below, response will be JWT token
 
         curl -X POST "http://localhost:8000/login/" -H  "Content-Type: application/json" -d "{\"password\":\"thevoiceseal\",\"username\":\"seal.seal\"}"
@@ -81,3 +80,5 @@
         curl -X GET "http://localhost:8000/scores/1/" -H  "accept: application/json" -H $VOICE_TOKEN
 
         # NOTE: Above are not really required by the UI
+
+testing
